@@ -7,7 +7,6 @@ return {
     require('mini.completion').setup()
     require('mini.notify').setup()
     require('mini.pairs').setup()
-    require('mini.statusline').setup()
   end
 }
 
