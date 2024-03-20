@@ -11,27 +11,24 @@ return {
         return vim.fn.executable 'make' == 1
       end,
     },
-    { 'nvim-telescope/telescope-ui-select.nvim' },
     { 'nvim-tree/nvim-web-devicons', enabled = true },
   },
   config = function()
-    require('telescope').setup {
-      extensions = {
-        ['ui-select'] = {
-          require('telescope.themes').get_dropdown(),
-        },
-      },
-    }
-
+    require('telescope').setup {}
     pcall(require('telescope').load_extension, 'fzf')
-    pcall(require('telescope').load_extension, 'ui-select')
 
     local builtin = require 'telescope.builtin'
-    vim.keymap.set('n', '<leader>ff', builtin.find_files)
-    vim.keymap.set('n', '<leader>fg', builtin.live_grep)
-    vim.keymap.set('n', '<leader><leader>', builtin.buffers)
-    vim.keymap.set('n', '<leader>fn', function()
+    vim.keymap.set('n', '<Leader>ff', builtin.find_files)
+    vim.keymap.set('n', '<Leader>fg', builtin.live_grep)
+    vim.keymap.set('n', '<Leader>fh', builtin.help_tags)
+    vim.keymap.set('n', '<Leader><Leader>', builtin.buffers)
+    vim.keymap.set('n', '<Leader>fc', function()
+      builtin.commands(require('telescope.themes').get_dropdown {
+        previewer = false,
+      })
+    end)
+    vim.keymap.set('n', '<Leader>fn', function()
       builtin.find_files { cwd = vim.fn.stdpath 'config' }
     end)
-  end
+  end,
 }

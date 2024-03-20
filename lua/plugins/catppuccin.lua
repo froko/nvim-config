@@ -1,20 +1,20 @@
 return {
-  "catppuccin/nvim",
-  name = "catppuccin",
+  'catppuccin/nvim',
+  name = 'catppuccin',
   priority = 1000,
   config = function()
-    require("catppuccin").setup({
+    require('catppuccin').setup {
       flavor = 'mocha',
       transparent_background = true,
       integrations = {
         telescope = true,
         mini = {
           enabled = true,
-          indentscope_color = "",
-        }
-      }
-    })
+          indentscope_color = '',
+        },
+      },
+    }
 
-    vim.cmd([[colorscheme catppuccin]])
-  end
+    vim.cmd [[colorscheme catppuccin]]
+  end,
 }
